@@ -1,0 +1,15 @@
+# macOS shit
+.DS_Store
+
+# cache
+__pycache__/
+grpo_trainer_lora_model/
+unsloth_compiled_cache/
+
+# log files
+*.log
+
+# result plots
+*.jpg
+*.jpeg
+*.png
