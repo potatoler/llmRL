@@ -167,3 +167,7 @@ compute the answer based on the formula
 number as answer here
 </answer>
 """
+
+taskOnly = """
+You are given a math or physics problem. Please solve the problem, and in the end give one number as answer between <answer> </answer> tags.
+"""

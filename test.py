@@ -104,11 +104,13 @@ def extract_last_number(text):
     numbers = re.findall(r'-?\d+(?:\.\d+)?', text)
     return numbers[-1] if numbers else ""
 
-def eval(model, tokenizer, dataset, instruction, batch_size=4):
+def eval(model, tokenizer, dataset, instruction, batch_size=4, maxSamples=None):
     correct = 0
     total = 0
+    if maxSamples is None:
+        maxSamples = len(dataset)
     for ix, example in enumerate(dataset):
-        if ix >= 100:
+        if ix >= maxSamples:
             break
         question = example["question"]
         gold = str(example["answer"]).strip()
@@ -181,7 +183,7 @@ finetuned_model, finetuned_tokenizer = FastLanguageModel.from_pretrained(
 )
 
 # print("===== Base =====")
-# eval(base_model, base_tokenizer, test_dataset, instructions.minimal3)
+# eval(base_model, base_tokenizer, test_dataset, instructions.taskOnly)
 
 # print("===== Finetuned =====")
 eval(finetuned_model, finetuned_tokenizer, test_dataset, instructions.minimal3)

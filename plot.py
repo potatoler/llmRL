@@ -45,12 +45,12 @@ def plot_metrics(data, smoothing_window=50):
     reward = smooth([d.get('reward', 0) for d in data])
     
     plt.figure(figsize=(16, 9), dpi=120)
-    plt.plot(steps, check_answer, 'b', linewidth=1.5, alpha=0.5,
-             label='Check Answer Reward')
+    # plt.plot(steps, check_answer, 'b', linewidth=1.5, alpha=0.5,
+    #          label='Check Answer Reward')
     plt.plot(steps, match_format, 'g', linewidth=1.5, alpha=0.7,
              label='Match Format Reward')
-    plt.plot(steps, reward, 'r', linewidth=2, alpha=0.7,
-             label='Total Reward')
+    # plt.plot(steps, reward, 'r', linewidth=2, alpha=0.7,
+    #          label='Total Reward')
     
     plt.xlabel('Training Step', fontsize=12)
     plt.ylabel('Reward Value', fontsize=12)
@@ -58,9 +58,9 @@ def plot_metrics(data, smoothing_window=50):
     plt.legend(fontsize=10)
     plt.grid(True, alpha=0.3)
     plt.tight_layout()
-    plt.savefig('rewards_0611.png', dpi=300, bbox_inches='tight')
+    plt.savefig('rewards_0611_F.png', dpi=300, bbox_inches='tight')
     plt.show()
 
 if __name__ == '__main__':
-    log_data = parse_log_file('grpo_0611.log')
+    log_data = parse_log_file('grpo_0611_F.log')
     plot_metrics(log_data)
