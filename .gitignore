@@ -1,6 +1,12 @@
 # macOS shit
 .DS_Store
 
+# roo config
+.roo/
+
+# checkpoints
+checkpoint*/
+
 # cache
 __pycache__/
 grpo_trainer_lora_model/
