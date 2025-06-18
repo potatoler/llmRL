@@ -6,7 +6,7 @@ from datasets import load_dataset
 
 max_seq_length = 4096 # Can increase for longer reasoning traces
 lora_rank = 32 # Larger rank = smarter, but slower
-modelToTrain = "unsloth/Qwen3-0.6B-Base"
+modelToTrain = "unsloth/Qwen3-4B-Base"
 
 model, tokenizer = FastLanguageModel.from_pretrained(
     model_name = modelToTrain,
@@ -239,9 +239,9 @@ training_args = GRPOConfig(
     # num_train_epochs = 1, # Set to 1 for a full training run
     max_steps = 1400,
     save_strategy = "steps",
-    save_steps = 100,
+    save_steps = 200,
     report_to = "none", # Can use Weights & Biases
-    output_dir = "/root/autodl-tmp/GrpoOut_0611_F",
+    output_dir = "/root/autodl-tmp/GrpoOut_0612_FA",
 
     # For optional training + evaluation
     # fp16_full_eval = True,
@@ -256,7 +256,7 @@ trainer = GRPOTrainer(
     processing_class = tokenizer,
     reward_funcs = [
         matchFormat,
-        # checkAnswer
+        checkAnswer
     ],
     args = training_args,
     train_dataset = dataset,

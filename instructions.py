@@ -153,7 +153,8 @@ number as answer here
 """
 
 minimal3 = """
-You are given a math or physics problem. Please solve the problem and response in the following format:
+You are given a math or physics problem in the form of cloze or single choice. For cloze question, answer with a number. For single choice, choose from A, B, C, D.
+Please solve the problem and response in the following format:
 <variables>
 extract variables from the question
 </variables>
@@ -164,10 +165,11 @@ derive formula based on variables you extracted
 compute the answer based on the formula
 </calculation>
 <answer>
-number as answer here
+number or capital letter as answer here
 </answer>
 """
 
 taskOnly = """
-You are given a math or physics problem. Please solve the problem, and in the end give one number as answer between <answer> </answer> tags.
+You are given a math or physics problem in the form of cloze or single choice. For cloze question, answer with a number. For single choice, choose from A, B, C, D.
+Please solve the problem, and in the end give one number as answer between <answer> </answer> tags.
 """

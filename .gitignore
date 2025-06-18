@@ -6,6 +6,7 @@
 
 # checkpoints
 checkpoint*/
+mathbench_v1/
 
 # cache
 __pycache__/
