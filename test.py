@@ -209,28 +209,28 @@ def testMathbench(model, tokenizer, datasetRoot, instruction, maxSamples=None):
 # test_dataset = load_dataset("openai/gsm8k", "main", split="test")
 # test_dataset = test_dataset.map(processDataset)
 
-print("===== Base =====")
-print("Loading base model...")
-base_model, base_tokenizer = FastLanguageModel.from_pretrained(
-    model_name = "unsloth/Qwen3-4B-Base",
-    max_seq_length = max_seq_length,
-    load_in_4bit = False, # False for LoRA 16bit
-    fast_inference = True, # Enable vLLM fast inference
-    max_lora_rank = lora_rank,
-    gpu_memory_utilization = 0.8, # Reduce if out of memory
-)
-# eval(base_model, base_tokenizer, test_dataset, instructions.taskOnly)
-testMathbench(base_model, base_tokenizer, "mathbench_v1", instructions.taskOnly)
-
-# print("===== Finetuned =====")
-# print("Loading LoRA fine-tuned model...")
-# finetuned_model, finetuned_tokenizer = FastLanguageModel.from_pretrained(
-#     model_name = "/root/autodl-fs/Qwen3-4B-FA-0612",
+# print("===== Base =====")
+# print("Loading base model...")
+# base_model, base_tokenizer = FastLanguageModel.from_pretrained(
+#     model_name = "unsloth/Qwen3-0.6B-Base",
 #     max_seq_length = max_seq_length,
 #     load_in_4bit = False, # False for LoRA 16bit
 #     fast_inference = True, # Enable vLLM fast inference
 #     max_lora_rank = lora_rank,
-#     gpu_memory_utilization = 0.8, # Reduce if out of memory
+#     gpu_memory_utilization = 0.9, # Reduce if out of memory
 # )
+# eval(base_model, base_tokenizer, test_dataset, instructions.taskOnly)
+# testMathbench(base_model, base_tokenizer, "mathbench_v1", instructions.taskOnly)
+
+print("===== Finetuned =====")
+print("Loading LoRA fine-tuned model...")
+finetuned_model, finetuned_tokenizer = FastLanguageModel.from_pretrained(
+    model_name = "checkpoints/Qwen3-0.6B-F_0611",
+    max_seq_length = max_seq_length,
+    load_in_4bit = False, # False for LoRA 16bit
+    fast_inference = True, # Enable vLLM fast inference
+    max_lora_rank = lora_rank,
+    gpu_memory_utilization = 0.9, # Reduce if out of memory
+)
 # eval(finetuned_model, finetuned_tokenizer, test_dataset, instructions.taskOnly)
-# testMathbench(finetuned_model, finetuned_tokenizer, "mathbench_v1", instructions.minimal3)
+testMathbench(finetuned_model, finetuned_tokenizer, "mathbench_v1", instructions.minimal3)

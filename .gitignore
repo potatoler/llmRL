@@ -6,12 +6,17 @@
 
 # checkpoints
 checkpoint*/
+
+# datasets
 mathbench_v1/
 
 # cache
 __pycache__/
 grpo_trainer_lora_model/
 unsloth_compiled_cache/
+
+# shell scripts
+*.sh
 
 # log files
 *.log
