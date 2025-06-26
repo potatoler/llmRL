@@ -20,6 +20,7 @@ unsloth_compiled_cache/
 
 # log files
 *.log
+logs/
 
 # result plots
 *.jpg
